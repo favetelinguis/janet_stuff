@@ -35,10 +35,11 @@ L82
   (var current-dial 50)
   (var zero-times 0)
   (loop [row :in in-data]
-    (let [[direction steps] (peg/match grammar row)
-	  new-dial (if (= direction :L) (rotate-left current-dial steps) (rotate-right current-dial steps))]
-      (set current-dial new-dial)
-      (when (= new-dial 0) (++ zero-times))))
+    (let [[direction steps] (peg/match grammar row)]
+      (set current-dial (if (= direction :L)
+			  (rotate-left current-dial steps)
+			  (rotate-right current-dial steps)))
+      (when (= current-dial 0) (++ zero-times))))
   zero-times)
 
 (defn answer-2 [in-data]
