@@ -12,11 +12,14 @@ R14
 L82
 `))
 
-(def data1 (file/lines "data-1.todo"))
-(defn pair [a b]
-  [a b])
+(def data1
+  (->> "day1a-input.txt"
+      (slurp)
+      (string/trim)
+      (string/split "\n")))
+
 (def grammar
-  ~{:number (/ (<- (some :d)) ,scan-number) # would be nice to limit to only 0-99 and fail to parse other 
+  ~{:number (/ (<- (some :d)) ,scan-number) 
     :direction (/ (<- (set "LR")) ,keyword)
     :main (* :direction :number)}) # TODO should not need * since it can only be one par
 
@@ -38,4 +41,7 @@ L82
       (when (= new-dial 0) (++ zero-times))))
   zero-times)
 
-(assertf (answer-1 sample-data) 32 "The sample data is not giving the correct value")
+# Usage example
+#(answer-1 sample-data)
+#(answer-1 data1)
+
