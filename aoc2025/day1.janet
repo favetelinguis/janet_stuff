@@ -24,11 +24,11 @@ L82
     :main (* :direction :number)}) # TODO should not need * since it can only be one par
 
 (defn rotate-right [current step]
-  "Use module arithmetics with number 0-99"
+  "Use modulo arithmetic with number 0-99"
   (% (+ current step) 100))
 
 (defn rotate-left [current step]
-  "Use module arithmetics with number 0-99"
+  "Use modulo arithmetic with number 0-99"
   (% (+ (- current step) 100) 100))
 
 (defn answer-1 [in-data]
