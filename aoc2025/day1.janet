@@ -21,7 +21,7 @@ L82
 (def grammar
   ~{:number (/ (<- (some :d)) ,scan-number) 
     :direction (/ (<- (set "LR")) ,keyword)
-    :main (* :direction :number)}) # TODO should not need * since it can only be one par
+    :main (* :direction :number)})
 
 (defn rotate-right [current step]
   "Use modulo arithmetic with number 0-99"
